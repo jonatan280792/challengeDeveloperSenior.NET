@@ -1,0 +1,353 @@
+USE [LibraryChallenge]
+GO
+/****** Object:  StoredProcedure [data].[delete_Editorials]    Script Date: 25/10/2020 8:37:29 p. m. ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Author, Jonatan Alexander Rojas>
+-- Create date: <Create Date, 2020/10/20>
+-- Description:	<Description, Elimina una editorial>
+-- =============================================
+CREATE PROCEDURE [data].[delete_Editorials]
+	@id INT
+AS
+BEGIN
+
+	DECLARE
+		@count_editorial INT
+
+	-- BUSCA SI EXITEN EDITORIALES ASOCIADAS A UN LIBRO
+	SELECT @count_editorial = COUNT(id) 
+		FROM [data].[libros] 
+	WHERE id = @id
+
+	-- MANEJADOR DE EVENTOS
+	BEGIN TRY
+	
+		IF (@count_editorial > 0)
+		BEGIN
+		-- SI TIENE EXISTENCIA AUN NO DEJA ELMINAR EL REGISTRO
+			SELECT -1 Transaccion, 'Existen editoriales asociadas a libros, elimine antes' Mensaje, 'Ok' Estado
+		END
+		ELSE
+		BEGIN
+		-- ELIMINA EL REGISTRO
+			DELETE FROM [data].[editoriales] WHERE id = @id
+
+			SELECT 1 Transaccion, 'Registro eliminado exitosamente' Mensaje, 'Ok' Estado
+		END
+	
+	END TRY  
+	BEGIN CATCH  
+		 SELECT -1 Transaccion, 'Error al eliminar el registro' Mensaje, 'Error' Estado
+	END CATCH
+
+
+	
+	
+
+END
+GO
+/****** Object:  StoredProcedure [data].[delete_Librarys]    Script Date: 25/10/2020 8:37:29 p. m. ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Author, Jonatan Alexander Rojas>
+-- Create date: <Create Date, 2020/10/20>
+-- Description:	<Description, Elimina una libro>
+-- =============================================
+CREATE PROCEDURE [data].[delete_Librarys]
+	@id INT
+AS
+BEGIN
+
+	-- MANEJADOR DE EVENTOS
+	BEGIN TRY
+
+		-- ELIMINA EL REGISTRO
+		DELETE FROM [data].[editoriales] WHERE id = @id
+
+		SELECT 1 Transaccion, 'Registro eliminado exitosamente' Mensaje, 'Ok' Estado
+	
+	END TRY  
+	BEGIN CATCH  
+		 SELECT -1 Transaccion, 'Error al eliminar el registro' Mensaje, 'Error' Estado
+	END CATCH
+
+
+	
+	
+
+END
+GO
+/****** Object:  StoredProcedure [data].[get_Editorials]    Script Date: 25/10/2020 8:37:29 p. m. ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Author, Jonatan Alexander Rojas>
+-- Create date: <Create Date, 2020/10/20>
+-- Description:	<Description, Retorna las editoriales activas>
+-- =============================================
+CREATE PROCEDURE [data].[get_Editorials]
+	@status BIT
+AS
+BEGIN
+	SELECT 
+		[id], 
+		[nombre], 
+		[sede], 
+		[estado]
+	FROM [data].[editoriales]
+	-- WHERE [estado] = @status
+		ORDER BY [nombre]
+END
+GO
+/****** Object:  StoredProcedure [data].[get_Librarys]    Script Date: 25/10/2020 8:37:29 p. m. ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Author, Jonatan Alexander Rojas>
+-- Create date: <Create Date, 2020/10/20>
+-- Description:	<Description, Retorna los libros activos>
+-- =============================================
+CREATE PROCEDURE [data].[get_Librarys]
+	@status BIT
+AS
+BEGIN
+	SELECT 
+		L.[id],
+		L.[ISBN], 
+		E.[id] id_editorial,
+		E.[nombre] editorial,
+		L.[titulo], 
+		L.[sinopsis], 
+		L.[n_paginas]
+	FROM [data].[libros] L
+	INNER JOIN [data].[editoriales] E
+		ON L.editoriales_id = E.id
+	WHERE L.[estado] = @status
+		ORDER BY [titulo]
+END
+GO
+/****** Object:  StoredProcedure [data].[put_Editorials]    Script Date: 25/10/2020 8:37:29 p. m. ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Author, Jonatan Alexander Rojas>
+-- Create date: <Create Date, 2020/10/25>
+-- Description:	<Description, Actualiza los datos de una editorial>
+-- =============================================
+CREATE PROCEDURE [data].[put_Editorials]
+	@id INT,
+	@name VARCHAR(45),
+	@campus VARCHAR(45),
+	@status BIT
+	
+AS
+BEGIN
+
+	-- MANEJADOR DE EVENTOS
+	BEGIN TRY
+	
+		UPDATE [data].[editoriales] SET
+			[nombre] = @name,
+			[sede] = @campus,
+			[estado] = @status
+		WHERE id = @id
+
+		SELECT 1 Transaccion, 'Editorial actualizada exitosamente' Mensaje, 'Ok' Estado
+	
+	END TRY  
+	BEGIN CATCH  
+		 SELECT -1 Transaccion, 'Error al actualizar el registro' Mensaje, 'Error' Estado
+	END CATCH
+END
+GO
+/****** Object:  StoredProcedure [data].[put_Librarys]    Script Date: 25/10/2020 8:37:29 p. m. ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Author, Jonatan Alexander Rojas>
+-- Create date: <Create Date, 2020/10/20>
+-- Description:	<Description, Actualiza los datos de un libro>
+-- =============================================
+CREATE PROCEDURE [data].[put_Librarys]
+	@id INT,
+	@isbn INT,
+	@id_editorial INT,
+	@title VARCHAR(45),
+	@n_pages INT,
+	@synopsis TEXT
+AS
+BEGIN
+
+	-- MANEJADOR DE EVENTOS
+	BEGIN TRY
+	
+		UPDATE [data].[libros] SET
+			[ISBN] = @isbn,
+			[editoriales_id] = @id_editorial,
+			[titulo] = @title, 
+			[sinopsis] = @synopsis, 
+			[n_paginas] = @n_pages
+		WHERE id = @id
+
+		SELECT 1 Transaccion, 'Libro actualizado exitosamente' Mensaje, 'Ok' Estado
+	
+	END TRY  
+	BEGIN CATCH  
+		 SELECT -1 Transaccion, 'Error al actualizar el registro' Mensaje, 'Error' Estado
+	END CATCH
+END
+GO
+/****** Object:  StoredProcedure [data].[set_Editorials]    Script Date: 25/10/2020 8:37:29 p. m. ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Author, Jonatan Alexander Rojas>
+-- Create date: <Create Date, 2020/10/20>
+-- Description:	<Description, Inserta nuevas editoriales en la tabla>
+-- =============================================
+CREATE PROCEDURE [data].[set_Editorials]
+	@name VARCHAR(45),
+	@campus VARCHAR(45),
+	@status BIT
+AS
+BEGIN
+	DECLARE
+	--OBTENGO LA FECHA ACTUAL PARA SU CORRESPONDIENTE REGISTRO
+		@fecha_registro DATETIME = GETDATE()
+
+	-- MANEJADOR DE EVENTOS
+	BEGIN TRY
+	
+		-- INSERTA UNA NUEVA EDITORIAL
+		INSERT INTO [data].[editoriales] (
+			[nombre], 
+			[sede],
+			[estado],
+			[fecha_creacion]
+		) VALUES (
+			@name,
+			@campus,
+			@status,
+			@fecha_registro
+		)
+
+		SELECT 1 Transaccion, 'Editorial creada exitosamente' Mensaje, 'Ok' Estado
+	
+	END TRY  
+	BEGIN CATCH  
+		 SELECT -1 Transaccion, 'Error al crear el registro' Mensaje, 'Error' Estado
+	END CATCH
+END
+GO
+/****** Object:  StoredProcedure [data].[set_Librarys]    Script Date: 25/10/2020 8:37:29 p. m. ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Author, Jonatan Alexander Rojas>
+-- Create date: <Create Date, 2020/10/20>
+-- Description:	<Description, Inserta nuevos libros en la tabla>
+-- =============================================
+CREATE PROCEDURE [data].[set_Librarys]
+	@isbn INT,
+	@id_editorial INT,
+	@title VARCHAR(45),
+	@n_pages INT,
+	@synopsis TEXT
+AS
+BEGIN
+	DECLARE
+	--OBTENGO LA FECHA ACTUAL PARA SU CORRESPONDIENTE REGISTRO
+		@fecha_registro DATETIME = GETDATE()
+
+	-- MANEJADOR DE EVENTOS
+	BEGIN TRY
+	
+		-- INSERTA UN NUEVO LIBRO
+		INSERT INTO [data].[libros] (
+			[ISBN], 
+			[editoriales_id], 
+			[titulo], 
+			[sinopsis], 
+			[n_paginas], 
+			[estado], 
+			[fecha_creacion]
+		) VALUES (
+			@isbn,
+			@id_editorial,
+			@title,
+			@synopsis,
+			@n_pages,
+			1,
+			@fecha_registro
+		)
+
+		SELECT 1 Transaccion, 'Libro creado exitosamente' Mensaje, 'Ok' Estado
+	
+	END TRY  
+	BEGIN CATCH  
+		 SELECT -1 Transaccion, 'Error al crear el registro' Mensaje, 'Error' Estado
+	END CATCH
+END
+GO
+/****** Object:  StoredProcedure [identity].[get_Login]    Script Date: 25/10/2020 8:37:29 p. m. ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Author, Jonatan Alexander Rojas>
+-- Create date: <Create Date, 2020/10/20>
+-- Description:	<Description, Loguea al usuario>
+-- =============================================
+CREATE PROCEDURE [identity].[get_Login]
+	@userName VARCHAR(45),
+	@passWord VARCHAR(45),
+	@status BIT
+AS
+BEGIN
+	DECLARE
+		@id int
+
+	SELECT TOP 1
+		@id = [id]
+	FROM [identity].[usuarios]
+		WHERE [usuario] = @userName
+		AND [contraseña] = @passWord
+		AND [estado] = @status
+
+
+	IF (@id IS NOT NULL)
+	BEGIN
+		SELECT 
+			1 Transaccion,
+			'Usuario conectado exitosamente' Mensaje,
+			CONVERT(bit, 1) Estado
+	END
+	ELSE
+	BEGIN
+		SELECT 
+			-1 Transaccion,
+			'Usuario y/o contraseña incorrecta' Mensaje,
+			CONVERT(bit, 0) Estado
+	END;
+END
+GO

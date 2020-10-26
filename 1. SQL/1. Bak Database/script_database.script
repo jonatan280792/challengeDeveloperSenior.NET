@@ -1,0 +1,626 @@
+USE [LibraryChallenge]
+GO
+/****** Object:  StoredProcedure [identity].[get_Login]    Script Date: 25/10/2020 8:35:57 p. m. ******/
+DROP PROCEDURE [identity].[get_Login]
+GO
+/****** Object:  StoredProcedure [data].[set_Librarys]    Script Date: 25/10/2020 8:35:57 p. m. ******/
+DROP PROCEDURE [data].[set_Librarys]
+GO
+/****** Object:  StoredProcedure [data].[set_Editorials]    Script Date: 25/10/2020 8:35:57 p. m. ******/
+DROP PROCEDURE [data].[set_Editorials]
+GO
+/****** Object:  StoredProcedure [data].[put_Librarys]    Script Date: 25/10/2020 8:35:57 p. m. ******/
+DROP PROCEDURE [data].[put_Librarys]
+GO
+/****** Object:  StoredProcedure [data].[put_Editorials]    Script Date: 25/10/2020 8:35:57 p. m. ******/
+DROP PROCEDURE [data].[put_Editorials]
+GO
+/****** Object:  StoredProcedure [data].[get_Librarys]    Script Date: 25/10/2020 8:35:57 p. m. ******/
+DROP PROCEDURE [data].[get_Librarys]
+GO
+/****** Object:  StoredProcedure [data].[get_Editorials]    Script Date: 25/10/2020 8:35:57 p. m. ******/
+DROP PROCEDURE [data].[get_Editorials]
+GO
+/****** Object:  StoredProcedure [data].[delete_Librarys]    Script Date: 25/10/2020 8:35:57 p. m. ******/
+DROP PROCEDURE [data].[delete_Librarys]
+GO
+/****** Object:  StoredProcedure [data].[delete_Editorials]    Script Date: 25/10/2020 8:35:57 p. m. ******/
+DROP PROCEDURE [data].[delete_Editorials]
+GO
+ALTER TABLE [data].[libros] DROP CONSTRAINT [FK_libros_editoriales]
+GO
+ALTER TABLE [data].[autores_has_libros] DROP CONSTRAINT [FK_autores_has_libros_autores]
+GO
+/****** Object:  Index [IX_autores_has_libros]    Script Date: 25/10/2020 8:35:57 p. m. ******/
+DROP INDEX [IX_autores_has_libros] ON [data].[autores_has_libros]
+GO
+/****** Object:  Table [identity].[usuarios]    Script Date: 25/10/2020 8:35:57 p. m. ******/
+DROP TABLE [identity].[usuarios]
+GO
+/****** Object:  Table [data].[libros]    Script Date: 25/10/2020 8:35:57 p. m. ******/
+DROP TABLE [data].[libros]
+GO
+/****** Object:  Table [data].[editoriales]    Script Date: 25/10/2020 8:35:57 p. m. ******/
+DROP TABLE [data].[editoriales]
+GO
+/****** Object:  Table [data].[autores_has_libros]    Script Date: 25/10/2020 8:35:57 p. m. ******/
+DROP TABLE [data].[autores_has_libros]
+GO
+/****** Object:  Table [data].[autores]    Script Date: 25/10/2020 8:35:57 p. m. ******/
+DROP TABLE [data].[autores]
+GO
+/****** Object:  Schema [identity]    Script Date: 25/10/2020 8:35:57 p. m. ******/
+DROP SCHEMA [identity]
+GO
+/****** Object:  Schema [data]    Script Date: 25/10/2020 8:35:57 p. m. ******/
+DROP SCHEMA [data]
+GO
+USE [master]
+GO
+/****** Object:  Database [LibraryChallenge]    Script Date: 25/10/2020 8:35:57 p. m. ******/
+DROP DATABASE [LibraryChallenge]
+GO
+/****** Object:  Database [LibraryChallenge]    Script Date: 25/10/2020 8:35:57 p. m. ******/
+CREATE DATABASE [LibraryChallenge]
+ CONTAINMENT = NONE
+ ON  PRIMARY 
+( NAME = N'LibraryChallenge', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL14.MSSQLSERVER\MSSQL\DATA\LibraryChallenge.mdf' , SIZE = 8192KB , MAXSIZE = UNLIMITED, FILEGROWTH = 65536KB )
+ LOG ON 
+( NAME = N'LibraryChallenge_log', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL14.MSSQLSERVER\MSSQL\DATA\LibraryChallenge_log.ldf' , SIZE = 8192KB , MAXSIZE = 2048GB , FILEGROWTH = 65536KB )
+GO
+IF (1 = FULLTEXTSERVICEPROPERTY('IsFullTextInstalled'))
+begin
+EXEC [LibraryChallenge].[dbo].[sp_fulltext_database] @action = 'enable'
+end
+GO
+ALTER DATABASE [LibraryChallenge] SET ANSI_NULL_DEFAULT OFF 
+GO
+ALTER DATABASE [LibraryChallenge] SET ANSI_NULLS OFF 
+GO
+ALTER DATABASE [LibraryChallenge] SET ANSI_PADDING OFF 
+GO
+ALTER DATABASE [LibraryChallenge] SET ANSI_WARNINGS OFF 
+GO
+ALTER DATABASE [LibraryChallenge] SET ARITHABORT OFF 
+GO
+ALTER DATABASE [LibraryChallenge] SET AUTO_CLOSE OFF 
+GO
+ALTER DATABASE [LibraryChallenge] SET AUTO_SHRINK OFF 
+GO
+ALTER DATABASE [LibraryChallenge] SET AUTO_UPDATE_STATISTICS ON 
+GO
+ALTER DATABASE [LibraryChallenge] SET CURSOR_CLOSE_ON_COMMIT OFF 
+GO
+ALTER DATABASE [LibraryChallenge] SET CURSOR_DEFAULT  GLOBAL 
+GO
+ALTER DATABASE [LibraryChallenge] SET CONCAT_NULL_YIELDS_NULL OFF 
+GO
+ALTER DATABASE [LibraryChallenge] SET NUMERIC_ROUNDABORT OFF 
+GO
+ALTER DATABASE [LibraryChallenge] SET QUOTED_IDENTIFIER OFF 
+GO
+ALTER DATABASE [LibraryChallenge] SET RECURSIVE_TRIGGERS OFF 
+GO
+ALTER DATABASE [LibraryChallenge] SET  DISABLE_BROKER 
+GO
+ALTER DATABASE [LibraryChallenge] SET AUTO_UPDATE_STATISTICS_ASYNC OFF 
+GO
+ALTER DATABASE [LibraryChallenge] SET DATE_CORRELATION_OPTIMIZATION OFF 
+GO
+ALTER DATABASE [LibraryChallenge] SET TRUSTWORTHY OFF 
+GO
+ALTER DATABASE [LibraryChallenge] SET ALLOW_SNAPSHOT_ISOLATION OFF 
+GO
+ALTER DATABASE [LibraryChallenge] SET PARAMETERIZATION SIMPLE 
+GO
+ALTER DATABASE [LibraryChallenge] SET READ_COMMITTED_SNAPSHOT OFF 
+GO
+ALTER DATABASE [LibraryChallenge] SET HONOR_BROKER_PRIORITY OFF 
+GO
+ALTER DATABASE [LibraryChallenge] SET RECOVERY FULL 
+GO
+ALTER DATABASE [LibraryChallenge] SET  MULTI_USER 
+GO
+ALTER DATABASE [LibraryChallenge] SET PAGE_VERIFY CHECKSUM  
+GO
+ALTER DATABASE [LibraryChallenge] SET DB_CHAINING OFF 
+GO
+ALTER DATABASE [LibraryChallenge] SET FILESTREAM( NON_TRANSACTED_ACCESS = OFF ) 
+GO
+ALTER DATABASE [LibraryChallenge] SET TARGET_RECOVERY_TIME = 60 SECONDS 
+GO
+ALTER DATABASE [LibraryChallenge] SET DELAYED_DURABILITY = DISABLED 
+GO
+EXEC sys.sp_db_vardecimal_storage_format N'LibraryChallenge', N'ON'
+GO
+USE [LibraryChallenge]
+GO
+/****** Object:  Schema [data]    Script Date: 25/10/2020 8:35:57 p. m. ******/
+CREATE SCHEMA [data]
+GO
+/****** Object:  Schema [identity]    Script Date: 25/10/2020 8:35:57 p. m. ******/
+CREATE SCHEMA [identity]
+GO
+/****** Object:  Table [data].[autores]    Script Date: 25/10/2020 8:35:57 p. m. ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [data].[autores](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[nombre] [varchar](45) NULL,
+	[apellidos] [varchar](45) NULL,
+ CONSTRAINT [PK_autores] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [data].[autores_has_libros]    Script Date: 25/10/2020 8:35:57 p. m. ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [data].[autores_has_libros](
+	[autores_id] [int] NOT NULL,
+	[libros_ISBN] [int] NOT NULL,
+ CONSTRAINT [PK_autores_has_libros] PRIMARY KEY CLUSTERED 
+(
+	[autores_id] ASC,
+	[libros_ISBN] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [data].[editoriales]    Script Date: 25/10/2020 8:35:57 p. m. ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [data].[editoriales](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[nombre] [varchar](45) NULL,
+	[sede] [varchar](45) NULL,
+	[estado] [bit] NULL,
+	[fecha_creacion] [datetime] NULL,
+ CONSTRAINT [PK_editoriales] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [data].[libros]    Script Date: 25/10/2020 8:35:57 p. m. ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [data].[libros](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[ISBN] [int] NOT NULL,
+	[editoriales_id] [int] NULL,
+	[titulo] [varchar](45) NULL,
+	[sinopsis] [text] NULL,
+	[n_paginas] [varchar](45) NULL,
+	[estado] [bit] NULL,
+	[fecha_creacion] [datetime] NULL,
+ CONSTRAINT [PK_libros] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC,
+	[ISBN] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [identity].[usuarios]    Script Date: 25/10/2020 8:35:57 p. m. ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [identity].[usuarios](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[usuario] [varchar](45) NULL,
+	[contraseña] [varchar](45) NULL,
+	[estado] [bit] NULL,
+ CONSTRAINT [PK_usuarios] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET IDENTITY_INSERT [data].[editoriales] ON 
+GO
+INSERT [data].[editoriales] ([id], [nombre], [sede], [estado], [fecha_creacion]) VALUES (1, N'Alfaomega', N'Principal', 1, NULL)
+GO
+INSERT [data].[editoriales] ([id], [nombre], [sede], [estado], [fecha_creacion]) VALUES (2, N'Americana', N'Principal', 1, NULL)
+GO
+INSERT [data].[editoriales] ([id], [nombre], [sede], [estado], [fecha_creacion]) VALUES (3, N'Colombian', N'Capital', 1, CAST(N'2020-10-25T14:25:28.783' AS DateTime))
+GO
+SET IDENTITY_INSERT [data].[editoriales] OFF
+GO
+SET IDENTITY_INSERT [data].[libros] ON 
+GO
+INSERT [data].[libros] ([id], [ISBN], [editoriales_id], [titulo], [sinopsis], [n_paginas], [estado], [fecha_creacion]) VALUES (1, 1, 2, N'Prueba', N'El niño del pijama de rayas. Bruno, de ocho años, es el hijo mimado de un oficial nazi. Al ascender a su padre, la familia se ve obligada a abandonar su confortable casa de Berlín y trasladarse a una zona aislada donde el solitario chico no tiene nada que hacer ni nadie con quien jugar.', N'1', 1, NULL)
+GO
+INSERT [data].[libros] ([id], [ISBN], [editoriales_id], [titulo], [sinopsis], [n_paginas], [estado], [fecha_creacion]) VALUES (2, 15, 2, N'El pastor', N'El buen pastos, editorial mantis', N'25', 1, NULL)
+GO
+INSERT [data].[libros] ([id], [ISBN], [editoriales_id], [titulo], [sinopsis], [n_paginas], [estado], [fecha_creacion]) VALUES (3, 124544, 1, N'El niño del pijama de rayas', N'Bruno, de ocho años, es el hijo mimado de un oficial nazi. Al ascender a su padre, la familia se ve obligada a abandonar su confortable casa de Berlín y trasladarse a una zona aislada donde el solitario chico no tiene nada que hacer ni nadie con quien jugar.
+
+Fuente: https://www.ejemplos.co/ejemplos-de-sinopsis/#ixzz6bkM8KVUq', N'59', 1, CAST(N'2020-10-23T20:11:17.597' AS DateTime))
+GO
+SET IDENTITY_INSERT [data].[libros] OFF
+GO
+SET IDENTITY_INSERT [identity].[usuarios] ON 
+GO
+INSERT [identity].[usuarios] ([id], [usuario], [contraseña], [estado]) VALUES (1, N'admin@admin.com', N'admin123', 1)
+GO
+SET IDENTITY_INSERT [identity].[usuarios] OFF
+GO
+/****** Object:  Index [IX_autores_has_libros]    Script Date: 25/10/2020 8:35:57 p. m. ******/
+CREATE NONCLUSTERED INDEX [IX_autores_has_libros] ON [data].[autores_has_libros]
+(
+	[autores_id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+GO
+ALTER TABLE [data].[autores_has_libros]  WITH CHECK ADD  CONSTRAINT [FK_autores_has_libros_autores] FOREIGN KEY([autores_id])
+REFERENCES [data].[autores] ([id])
+GO
+ALTER TABLE [data].[autores_has_libros] CHECK CONSTRAINT [FK_autores_has_libros_autores]
+GO
+ALTER TABLE [data].[libros]  WITH CHECK ADD  CONSTRAINT [FK_libros_editoriales] FOREIGN KEY([editoriales_id])
+REFERENCES [data].[editoriales] ([id])
+GO
+ALTER TABLE [data].[libros] CHECK CONSTRAINT [FK_libros_editoriales]
+GO
+/****** Object:  StoredProcedure [data].[delete_Editorials]    Script Date: 25/10/2020 8:35:57 p. m. ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Author, Jonatan Alexander Rojas>
+-- Create date: <Create Date, 2020/10/20>
+-- Description:	<Description, Elimina una editorial>
+-- =============================================
+CREATE PROCEDURE [data].[delete_Editorials]
+	@id INT
+AS
+BEGIN
+
+	DECLARE
+		@count_editorial INT
+
+	-- BUSCA SI EXITEN EDITORIALES ASOCIADAS A UN LIBRO
+	SELECT @count_editorial = COUNT(id) 
+		FROM [data].[libros] 
+	WHERE id = @id
+
+	-- MANEJADOR DE EVENTOS
+	BEGIN TRY
+	
+		IF (@count_editorial > 0)
+		BEGIN
+		-- SI TIENE EXISTENCIA AUN NO DEJA ELMINAR EL REGISTRO
+			SELECT -1 Transaccion, 'Existen editoriales asociadas a libros, elimine antes' Mensaje, 'Ok' Estado
+		END
+		ELSE
+		BEGIN
+		-- ELIMINA EL REGISTRO
+			DELETE FROM [data].[editoriales] WHERE id = @id
+
+			SELECT 1 Transaccion, 'Registro eliminado exitosamente' Mensaje, 'Ok' Estado
+		END
+	
+	END TRY  
+	BEGIN CATCH  
+		 SELECT -1 Transaccion, 'Error al eliminar el registro' Mensaje, 'Error' Estado
+	END CATCH
+
+
+	
+	
+
+END
+GO
+/****** Object:  StoredProcedure [data].[delete_Librarys]    Script Date: 25/10/2020 8:35:57 p. m. ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Author, Jonatan Alexander Rojas>
+-- Create date: <Create Date, 2020/10/20>
+-- Description:	<Description, Elimina una libro>
+-- =============================================
+CREATE PROCEDURE [data].[delete_Librarys]
+	@id INT
+AS
+BEGIN
+
+	-- MANEJADOR DE EVENTOS
+	BEGIN TRY
+
+		-- ELIMINA EL REGISTRO
+		DELETE FROM [data].[editoriales] WHERE id = @id
+
+		SELECT 1 Transaccion, 'Registro eliminado exitosamente' Mensaje, 'Ok' Estado
+	
+	END TRY  
+	BEGIN CATCH  
+		 SELECT -1 Transaccion, 'Error al eliminar el registro' Mensaje, 'Error' Estado
+	END CATCH
+
+
+	
+	
+
+END
+GO
+/****** Object:  StoredProcedure [data].[get_Editorials]    Script Date: 25/10/2020 8:35:57 p. m. ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Author, Jonatan Alexander Rojas>
+-- Create date: <Create Date, 2020/10/20>
+-- Description:	<Description, Retorna las editoriales activas>
+-- =============================================
+CREATE PROCEDURE [data].[get_Editorials]
+	@status BIT
+AS
+BEGIN
+	SELECT 
+		[id], 
+		[nombre], 
+		[sede], 
+		[estado]
+	FROM [data].[editoriales]
+	-- WHERE [estado] = @status
+		ORDER BY [nombre]
+END
+GO
+/****** Object:  StoredProcedure [data].[get_Librarys]    Script Date: 25/10/2020 8:35:57 p. m. ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Author, Jonatan Alexander Rojas>
+-- Create date: <Create Date, 2020/10/20>
+-- Description:	<Description, Retorna los libros activos>
+-- =============================================
+CREATE PROCEDURE [data].[get_Librarys]
+	@status BIT
+AS
+BEGIN
+	SELECT 
+		L.[id],
+		L.[ISBN], 
+		E.[id] id_editorial,
+		E.[nombre] editorial,
+		L.[titulo], 
+		L.[sinopsis], 
+		L.[n_paginas]
+	FROM [data].[libros] L
+	INNER JOIN [data].[editoriales] E
+		ON L.editoriales_id = E.id
+	WHERE L.[estado] = @status
+		ORDER BY [titulo]
+END
+GO
+/****** Object:  StoredProcedure [data].[put_Editorials]    Script Date: 25/10/2020 8:35:57 p. m. ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Author, Jonatan Alexander Rojas>
+-- Create date: <Create Date, 2020/10/25>
+-- Description:	<Description, Actualiza los datos de una editorial>
+-- =============================================
+CREATE PROCEDURE [data].[put_Editorials]
+	@id INT,
+	@name VARCHAR(45),
+	@campus VARCHAR(45),
+	@status BIT
+	
+AS
+BEGIN
+
+	-- MANEJADOR DE EVENTOS
+	BEGIN TRY
+	
+		UPDATE [data].[editoriales] SET
+			[nombre] = @name,
+			[sede] = @campus,
+			[estado] = @status
+		WHERE id = @id
+
+		SELECT 1 Transaccion, 'Editorial actualizada exitosamente' Mensaje, 'Ok' Estado
+	
+	END TRY  
+	BEGIN CATCH  
+		 SELECT -1 Transaccion, 'Error al actualizar el registro' Mensaje, 'Error' Estado
+	END CATCH
+END
+GO
+/****** Object:  StoredProcedure [data].[put_Librarys]    Script Date: 25/10/2020 8:35:57 p. m. ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Author, Jonatan Alexander Rojas>
+-- Create date: <Create Date, 2020/10/20>
+-- Description:	<Description, Actualiza los datos de un libro>
+-- =============================================
+CREATE PROCEDURE [data].[put_Librarys]
+	@id INT,
+	@isbn INT,
+	@id_editorial INT,
+	@title VARCHAR(45),
+	@n_pages INT,
+	@synopsis TEXT
+AS
+BEGIN
+
+	-- MANEJADOR DE EVENTOS
+	BEGIN TRY
+	
+		UPDATE [data].[libros] SET
+			[ISBN] = @isbn,
+			[editoriales_id] = @id_editorial,
+			[titulo] = @title, 
+			[sinopsis] = @synopsis, 
+			[n_paginas] = @n_pages
+		WHERE id = @id
+
+		SELECT 1 Transaccion, 'Libro actualizado exitosamente' Mensaje, 'Ok' Estado
+	
+	END TRY  
+	BEGIN CATCH  
+		 SELECT -1 Transaccion, 'Error al actualizar el registro' Mensaje, 'Error' Estado
+	END CATCH
+END
+GO
+/****** Object:  StoredProcedure [data].[set_Editorials]    Script Date: 25/10/2020 8:35:57 p. m. ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Author, Jonatan Alexander Rojas>
+-- Create date: <Create Date, 2020/10/20>
+-- Description:	<Description, Inserta nuevas editoriales en la tabla>
+-- =============================================
+CREATE PROCEDURE [data].[set_Editorials]
+	@name VARCHAR(45),
+	@campus VARCHAR(45),
+	@status BIT
+AS
+BEGIN
+	DECLARE
+	--OBTENGO LA FECHA ACTUAL PARA SU CORRESPONDIENTE REGISTRO
+		@fecha_registro DATETIME = GETDATE()
+
+	-- MANEJADOR DE EVENTOS
+	BEGIN TRY
+	
+		-- INSERTA UNA NUEVA EDITORIAL
+		INSERT INTO [data].[editoriales] (
+			[nombre], 
+			[sede],
+			[estado],
+			[fecha_creacion]
+		) VALUES (
+			@name,
+			@campus,
+			@status,
+			@fecha_registro
+		)
+
+		SELECT 1 Transaccion, 'Editorial creada exitosamente' Mensaje, 'Ok' Estado
+	
+	END TRY  
+	BEGIN CATCH  
+		 SELECT -1 Transaccion, 'Error al crear el registro' Mensaje, 'Error' Estado
+	END CATCH
+END
+GO
+/****** Object:  StoredProcedure [data].[set_Librarys]    Script Date: 25/10/2020 8:35:57 p. m. ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Author, Jonatan Alexander Rojas>
+-- Create date: <Create Date, 2020/10/20>
+-- Description:	<Description, Inserta nuevos libros en la tabla>
+-- =============================================
+CREATE PROCEDURE [data].[set_Librarys]
+	@isbn INT,
+	@id_editorial INT,
+	@title VARCHAR(45),
+	@n_pages INT,
+	@synopsis TEXT
+AS
+BEGIN
+	DECLARE
+	--OBTENGO LA FECHA ACTUAL PARA SU CORRESPONDIENTE REGISTRO
+		@fecha_registro DATETIME = GETDATE()
+
+	-- MANEJADOR DE EVENTOS
+	BEGIN TRY
+	
+		-- INSERTA UN NUEVO LIBRO
+		INSERT INTO [data].[libros] (
+			[ISBN], 
+			[editoriales_id], 
+			[titulo], 
+			[sinopsis], 
+			[n_paginas], 
+			[estado], 
+			[fecha_creacion]
+		) VALUES (
+			@isbn,
+			@id_editorial,
+			@title,
+			@synopsis,
+			@n_pages,
+			1,
+			@fecha_registro
+		)
+
+		SELECT 1 Transaccion, 'Libro creado exitosamente' Mensaje, 'Ok' Estado
+	
+	END TRY  
+	BEGIN CATCH  
+		 SELECT -1 Transaccion, 'Error al crear el registro' Mensaje, 'Error' Estado
+	END CATCH
+END
+GO
+/****** Object:  StoredProcedure [identity].[get_Login]    Script Date: 25/10/2020 8:35:57 p. m. ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Author, Jonatan Alexander Rojas>
+-- Create date: <Create Date, 2020/10/20>
+-- Description:	<Description, Loguea al usuario>
+-- =============================================
+CREATE PROCEDURE [identity].[get_Login]
+	@userName VARCHAR(45),
+	@passWord VARCHAR(45),
+	@status BIT
+AS
+BEGIN
+	DECLARE
+		@id int
+
+	SELECT TOP 1
+		@id = [id]
+	FROM [identity].[usuarios]
+		WHERE [usuario] = @userName
+		AND [contraseña] = @passWord
+		AND [estado] = @status
+
+
+	IF (@id IS NOT NULL)
+	BEGIN
+		SELECT 
+			1 Transaccion,
+			'Usuario conectado exitosamente' Mensaje,
+			CONVERT(bit, 1) Estado
+	END
+	ELSE
+	BEGIN
+		SELECT 
+			-1 Transaccion,
+			'Usuario y/o contraseña incorrecta' Mensaje,
+			CONVERT(bit, 0) Estado
+	END;
+END
+GO
+USE [master]
+GO
+ALTER DATABASE [LibraryChallenge] SET  READ_WRITE 
+GO

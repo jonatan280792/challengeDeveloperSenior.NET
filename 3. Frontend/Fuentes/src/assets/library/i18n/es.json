@@ -1,0 +1,36 @@
+{
+  "logged-user": {
+    "themes": {
+      "theme1": "Azul y Blanco",
+      "theme2": "Rosa y Negro",
+      "theme3": "Azul y Negro"      
+    }
+  },
+  "homeToolbar": "Bilioteca, Jonatan Alexander Rojas Ramirez",
+  "menu": {
+    "home": "Inicio",
+    "register": "Libros",
+    "sales": "Editoriales"
+  },
+  "pages": {
+    "editorials": {
+      "title": "Editoriales",
+      "filterInput": "Filtrar",
+      "placeFilter": "Ingrese un criterio de búsqueda",
+      "headTableId": "No.",
+      "headTableName": "Nombre",
+      "headTableCampus": "Sede",
+      "headTableStatus": "Estado"
+    },
+    "register": {
+      "title": "Libros",
+      "filterInput": "Filtrar",
+      "placeFilter": "Ingrese un criterio de búsqueda",
+      "headTableId": "No.",
+      "headTableIsbn": "ISBN",
+      "headTableEditorial": "Editorial",
+      "headTableTitle": "Titulo",
+      "headTablePages": "No Paginas"      
+    }
+  }
+}

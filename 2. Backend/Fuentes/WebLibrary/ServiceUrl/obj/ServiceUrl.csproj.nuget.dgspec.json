@@ -1,0 +1,315 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Source\\challengeDeveloperSenior.NET\\2. Backend\\Fuentes\\WebLibrary\\ServiceUrl\\ServiceUrl.csproj": {}
+  },
+  "projects": {
+    "C:\\Source\\challengeDeveloperSenior.NET\\2. Backend\\Fuentes\\WebLibrary\\Business\\Business.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Source\\challengeDeveloperSenior.NET\\2. Backend\\Fuentes\\WebLibrary\\Business\\Business.csproj",
+        "projectName": "Business",
+        "projectPath": "C:\\Source\\challengeDeveloperSenior.NET\\2. Backend\\Fuentes\\WebLibrary\\Business\\Business.csproj",
+        "packagesPath": "C:\\Users\\jonat\\.nuget\\packages\\",
+        "outputPath": "C:\\Source\\challengeDeveloperSenior.NET\\2. Backend\\Fuentes\\WebLibrary\\Business\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\jonat\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {
+              "C:\\Source\\challengeDeveloperSenior.NET\\2. Backend\\Fuentes\\WebLibrary\\Entity\\Entity.csproj": {
+                "projectPath": "C:\\Source\\challengeDeveloperSenior.NET\\2. Backend\\Fuentes\\WebLibrary\\Entity\\Entity.csproj"
+              },
+              "C:\\Source\\challengeDeveloperSenior.NET\\2. Backend\\Fuentes\\WebLibrary\\Repository\\Repository.csproj": {
+                "projectPath": "C:\\Source\\challengeDeveloperSenior.NET\\2. Backend\\Fuentes\\WebLibrary\\Repository\\Repository.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.300\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Source\\challengeDeveloperSenior.NET\\2. Backend\\Fuentes\\WebLibrary\\Entity\\Entity.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Source\\challengeDeveloperSenior.NET\\2. Backend\\Fuentes\\WebLibrary\\Entity\\Entity.csproj",
+        "projectName": "Entity",
+        "projectPath": "C:\\Source\\challengeDeveloperSenior.NET\\2. Backend\\Fuentes\\WebLibrary\\Entity\\Entity.csproj",
+        "packagesPath": "C:\\Users\\jonat\\.nuget\\packages\\",
+        "outputPath": "C:\\Source\\challengeDeveloperSenior.NET\\2. Backend\\Fuentes\\WebLibrary\\Entity\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\jonat\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.300\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Source\\challengeDeveloperSenior.NET\\2. Backend\\Fuentes\\WebLibrary\\Repository\\Repository.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Source\\challengeDeveloperSenior.NET\\2. Backend\\Fuentes\\WebLibrary\\Repository\\Repository.csproj",
+        "projectName": "Repository",
+        "projectPath": "C:\\Source\\challengeDeveloperSenior.NET\\2. Backend\\Fuentes\\WebLibrary\\Repository\\Repository.csproj",
+        "packagesPath": "C:\\Users\\jonat\\.nuget\\packages\\",
+        "outputPath": "C:\\Source\\challengeDeveloperSenior.NET\\2. Backend\\Fuentes\\WebLibrary\\Repository\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\jonat\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {
+              "C:\\Source\\challengeDeveloperSenior.NET\\2. Backend\\Fuentes\\WebLibrary\\Entity\\Entity.csproj": {
+                "projectPath": "C:\\Source\\challengeDeveloperSenior.NET\\2. Backend\\Fuentes\\WebLibrary\\Entity\\Entity.csproj"
+              },
+              "C:\\Source\\challengeDeveloperSenior.NET\\2. Backend\\Fuentes\\WebLibrary\\Security\\Security.csproj": {
+                "projectPath": "C:\\Source\\challengeDeveloperSenior.NET\\2. Backend\\Fuentes\\WebLibrary\\Security\\Security.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "dependencies": {
+            "Microsoft.Extensions.Configuration.Abstractions": {
+              "target": "Package",
+              "version": "[3.1.9, )"
+            },
+            "System.Data.SqlClient": {
+              "target": "Package",
+              "version": "[4.8.2, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.300\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Source\\challengeDeveloperSenior.NET\\2. Backend\\Fuentes\\WebLibrary\\Security\\Security.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Source\\challengeDeveloperSenior.NET\\2. Backend\\Fuentes\\WebLibrary\\Security\\Security.csproj",
+        "projectName": "Security",
+        "projectPath": "C:\\Source\\challengeDeveloperSenior.NET\\2. Backend\\Fuentes\\WebLibrary\\Security\\Security.csproj",
+        "packagesPath": "C:\\Users\\jonat\\.nuget\\packages\\",
+        "outputPath": "C:\\Source\\challengeDeveloperSenior.NET\\2. Backend\\Fuentes\\WebLibrary\\Security\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\jonat\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "dependencies": {
+            "Microsoft.Extensions.Configuration.Abstractions": {
+              "target": "Package",
+              "version": "[3.1.9, )"
+            },
+            "System.IdentityModel.Tokens.Jwt": {
+              "target": "Package",
+              "version": "[6.8.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.300\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Source\\challengeDeveloperSenior.NET\\2. Backend\\Fuentes\\WebLibrary\\ServiceUrl\\ServiceUrl.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Source\\challengeDeveloperSenior.NET\\2. Backend\\Fuentes\\WebLibrary\\ServiceUrl\\ServiceUrl.csproj",
+        "projectName": "ServiceUrl",
+        "projectPath": "C:\\Source\\challengeDeveloperSenior.NET\\2. Backend\\Fuentes\\WebLibrary\\ServiceUrl\\ServiceUrl.csproj",
+        "packagesPath": "C:\\Users\\jonat\\.nuget\\packages\\",
+        "outputPath": "C:\\Source\\challengeDeveloperSenior.NET\\2. Backend\\Fuentes\\WebLibrary\\ServiceUrl\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\jonat\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {
+              "C:\\Source\\challengeDeveloperSenior.NET\\2. Backend\\Fuentes\\WebLibrary\\Business\\Business.csproj": {
+                "projectPath": "C:\\Source\\challengeDeveloperSenior.NET\\2. Backend\\Fuentes\\WebLibrary\\Business\\Business.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "dependencies": {
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[3.1.9, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.300\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

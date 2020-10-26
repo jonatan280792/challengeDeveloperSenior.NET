@@ -1,0 +1,9 @@
+C:\Source\challengeDeveloperSenior.NET\Backend\WebLibrary\Entity\bin\Release\netcoreapp3.1\Entity.deps.json
+C:\Source\challengeDeveloperSenior.NET\Backend\WebLibrary\Entity\bin\Release\netcoreapp3.1\Entity.dll
+C:\Source\challengeDeveloperSenior.NET\Backend\WebLibrary\Entity\bin\Release\netcoreapp3.1\Entity.pdb
+C:\Source\challengeDeveloperSenior.NET\Backend\WebLibrary\Entity\obj\Release\netcoreapp3.1\Entity.csprojAssemblyReference.cache
+C:\Source\challengeDeveloperSenior.NET\Backend\WebLibrary\Entity\obj\Release\netcoreapp3.1\Entity.AssemblyInfoInputs.cache
+C:\Source\challengeDeveloperSenior.NET\Backend\WebLibrary\Entity\obj\Release\netcoreapp3.1\Entity.AssemblyInfo.cs
+C:\Source\challengeDeveloperSenior.NET\Backend\WebLibrary\Entity\obj\Release\netcoreapp3.1\Entity.csproj.CoreCompileInputs.cache
+C:\Source\challengeDeveloperSenior.NET\Backend\WebLibrary\Entity\obj\Release\netcoreapp3.1\Entity.dll
+C:\Source\challengeDeveloperSenior.NET\Backend\WebLibrary\Entity\obj\Release\netcoreapp3.1\Entity.pdb

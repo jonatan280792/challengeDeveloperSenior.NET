@@ -1,0 +1,17 @@
+@import 'mixins/font-style';
+
+.app-library {
+  // font-family: $proxima-nova;
+  @include font-style('$proxima-nova', 28px);
+
+  @import 'modules/logged-user';
+  @import 'modules/register';
+  @import 'modules/sales';
+  // @import 'modules/dashboard';
+
+  /* Partials */
+  @import 'partials/body';
+  @import 'partials/footer';
+  @import 'partials/header';
+  @import 'partials/pages';
+}

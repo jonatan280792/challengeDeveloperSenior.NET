@@ -1,0 +1,9 @@
+C:\Source\challengeDeveloperSenior.NET\Backend\WebLibrary\Security\bin\Release\netcoreapp3.1\Security.deps.json
+C:\Source\challengeDeveloperSenior.NET\Backend\WebLibrary\Security\bin\Release\netcoreapp3.1\Security.dll
+C:\Source\challengeDeveloperSenior.NET\Backend\WebLibrary\Security\bin\Release\netcoreapp3.1\Security.pdb
+C:\Source\challengeDeveloperSenior.NET\Backend\WebLibrary\Security\obj\Release\netcoreapp3.1\Security.csprojAssemblyReference.cache
+C:\Source\challengeDeveloperSenior.NET\Backend\WebLibrary\Security\obj\Release\netcoreapp3.1\Security.AssemblyInfoInputs.cache
+C:\Source\challengeDeveloperSenior.NET\Backend\WebLibrary\Security\obj\Release\netcoreapp3.1\Security.AssemblyInfo.cs
+C:\Source\challengeDeveloperSenior.NET\Backend\WebLibrary\Security\obj\Release\netcoreapp3.1\Security.csproj.CoreCompileInputs.cache
+C:\Source\challengeDeveloperSenior.NET\Backend\WebLibrary\Security\obj\Release\netcoreapp3.1\Security.dll
+C:\Source\challengeDeveloperSenior.NET\Backend\WebLibrary\Security\obj\Release\netcoreapp3.1\Security.pdb

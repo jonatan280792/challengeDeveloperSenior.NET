@@ -1,0 +1,8 @@
+----------------------------------------------------------------
+Protecto fuente de la prueana requeria.
+
+1. SQL Server 2017
+2. API REST Net.Core 3.1
+3. Angular 8.2
+
+Favor leer la el item "4. Documenacion" en el cual se detallan cada una de las capas y se mencionan mejoras que se le hicieron a la prueba aprovechando toda la experiencia adquirida a lo largo de estos 5 años como desarrollador fullStack .NET, gracias por su atencion.

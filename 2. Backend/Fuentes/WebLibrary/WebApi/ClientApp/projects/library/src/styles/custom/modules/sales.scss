@@ -1,0 +1,62 @@
+.sales {
+  font-family: $font-nova;
+
+  .section-logout {
+    float: right;
+    padding-top: 4px;
+
+    .logout-margin {
+      background: $color-alert;
+      border-radius: 8%;
+      padding: 10px 20px;
+
+      span {
+        color: #ffffff;
+      }
+    }
+  }
+
+  .sections-sales {
+    // padding-top: 72px;
+
+    .table-sales {
+      width: 100%;
+
+      .icons-table {
+        padding: 0 2px 0 0;
+      }
+    }
+  }
+}
+
+.edit-sales {
+  font-family: $font-nova;
+  padding-bottom: 12px;
+  padding-top: 20px;
+
+  .form-edit {
+    .card-edit {
+      border-top: solid 4px #ff0000;
+
+      .align-center {
+        text-align: center;
+      }
+    }
+  }
+}
+
+.create-sales {
+  font-family: $font-nova;
+  padding-bottom: 12px;
+  padding-top: 20px;
+
+  .form-create {
+    .card-create {
+      border-top: solid 4px #0000ff;
+
+      .align-center {
+        text-align: center;
+      }
+    }
+  }
+}
